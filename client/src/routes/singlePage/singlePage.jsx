@@ -4,7 +4,6 @@ import { singlePostData, userData } from "../../lib/dummydata";
 import Map from "../../components/map/map";
 
 function SinglePage() {
-  const { contacts } = useLoaderData();
   return (
     <div className="singlePage">
       <div className="details">
