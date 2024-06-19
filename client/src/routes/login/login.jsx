@@ -32,8 +32,15 @@ function Login() {
 
       navigate("/");
     } catch (err) {
-      console.log(err);
-      setError(err.response.data.message);
+      if (err.response) {
+        // The client was given an error response (5xx, 4xx)
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else if (err.request) {
+        console.log(err);
+        // The client never received a response, and the request was never left
+      }
     } finally {
       setisLoading(false);
     }

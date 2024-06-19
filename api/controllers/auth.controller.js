@@ -36,8 +36,10 @@ export const login = async (req, res) => {
       where: { username },
     });
 
-    if (!user) return res.status(404).json({ message: "Invalid credentials" });
-
+    if (!user) {
+      console.log(`User with username '${username}' not found.`);
+      return res.status(404).json({ message: "Invalid credentials" });
+    }
     //CHECK IF THE PASSWORD IS CORRECT
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
